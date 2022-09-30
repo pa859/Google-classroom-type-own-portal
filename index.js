@@ -31,7 +31,7 @@ const assignmentRoutes = require('./routes/assignments');
 const submissionRoutes = require('./routes/submissions');
 const { report } = require('process');
 
-mongoose.connect('mongodb://localhost:27017/isdla', {
+mongoose.connect('mongodb://pushkar1913:IYxuI5xPZ9ZHMt22@cluster0-shard-00-00.ungsb.mongodb.net:27017,cluster0-shard-00-01.ungsb.mongodb.net:27017,cluster0-shard-00-02.ungsb.mongodb.net:27017/?ssl=true&replicaSet=atlas-cvj89o-shard-0&authSource=admin&retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -108,7 +108,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('Serving on port 3001')
 })
 

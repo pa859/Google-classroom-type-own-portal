@@ -10,16 +10,18 @@ module.exports.index = async (req, res) => {
 module.exports.renderNewForm = (req, res) => {
     res.render('classrooms/new');
 }
-
+//        <!-- <img class="img-fluid" alt="" style="width: 300px; height: 200px;" src="<%=classroom.images[0].url%>"> -->
 module.exports.createClassroom = async (req, res, next) => {
     const classroom = new Classroom(req.body.classroom);
-    classroom.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    console.log(req.body);
+    // classroom.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     classroom.author = req.user._id;
     await classroom.save();
     console.log(classroom);
     req.flash('success', 'Successfully made a new classroom!');
     res.redirect(`/classrooms/${classroom._id}`)
 }
+
 
 module.exports.showClassroom = async (req, res,) => {
     const classroom = await Classroom.findById(req.params.id).populate({
